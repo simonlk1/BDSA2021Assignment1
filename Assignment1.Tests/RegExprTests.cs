@@ -75,11 +75,39 @@ namespace Assignment1.Tests
         public void Resolutions_given_1920x1080_1024x768_800x600_returns_3_tuples()
         {
             // Arrange
-            var input = "1920x1080 1024x768 800x600";
+            var input = new[] { "1920x1080 1024x768 800x600" };
 
             // Act
             var output = RegExpr.Resolution(input);
             var expected = new List<(int, int)> { (1920, 1080), (1024, 768), (800, 600) };
+
+            // Assert
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void Resolutions_given_1024x920_500x1000_1x1_in_array_returns_3_tuples()
+        {
+            // Arrange
+            var input = new[] { "1024x920", "500x1000", "1x1" };
+
+            // Act
+            var output = RegExpr.Resolution(input);
+            var expected = new List<(int, int)> { (1024, 920), (500, 1000), (1, 1) };
+
+            // Assert
+            Assert.Equal(expected, output);
+        }
+
+        [Fact]
+        public void Resolutions_given_missing_information_and_multiple_resolutions_in_same_index()
+        {
+            // Arrange
+            var input = new[] { "1x", "x2", "20x20    9x", "50c50" };
+
+            // Act
+            var output = RegExpr.Resolution(input);
+            var expected = new List<(int, int)> { (20, 20) };
 
             // Assert
             Assert.Equal(expected, output);

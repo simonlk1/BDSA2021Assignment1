@@ -22,19 +22,23 @@ namespace Assignment1
             }
         }
 
-        public static IEnumerable<(int width, int height)> Resolution(string resolutions)
+        public static IEnumerable<(int width, int height)> Resolution(IEnumerable<string> resolutions)
         {
             var pattern = @"(?<width>\d+)x(?<height>\d+)";
-            var matches = Regex.Matches(resolutions, pattern);
-
-            // why does var treat match as of type object?
-            foreach (Match match in matches)
+            foreach (var resolution in resolutions)
             {
-                var width = Int32.Parse(match.Groups["width"].Value);
-                var height = Int32.Parse(match.Groups["height"].Value);
+                var matches = Regex.Matches(resolution, pattern);
 
-                yield return (width, height);
+                // why does var treat match as of type object?
+                foreach (Match match in matches)
+                {
+                    var width = Int32.Parse(match.Groups["width"].Value);
+                    var height = Int32.Parse(match.Groups["height"].Value);
+
+                    yield return (width, height);
+                }
             }
+
         }
 
         public static IEnumerable<string> InnerText(string html, string tag)
