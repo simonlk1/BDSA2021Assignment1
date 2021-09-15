@@ -17,17 +17,14 @@ namespace Assignment1
 
                 foreach (var match in matches)
                 {
-                    var stringBuilder = new StringBuilder(match.ToString());
-                    stringBuilder.Append("\n");
-                    var result = stringBuilder.ToString();
-                    yield return result;
+                    yield return match.ToString();
                 }
             }
         }
 
         public static IEnumerable<(int width, int height)> Resolution(string resolutions)
         {
-            var pattern = @"(?<width>[0-9]+)x(?<height>[0-9]+)";
+            var pattern = @"(?<width>\d+)x(?<height>\d+)";
             var matches = Regex.Matches(resolutions, pattern);
 
             // why does var treat match as of type object?
