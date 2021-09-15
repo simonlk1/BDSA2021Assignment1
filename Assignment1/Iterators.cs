@@ -20,8 +20,7 @@ namespace Assignment1
         {
             foreach (var item in items)
             {
-                bool keepItem = predicate.Invoke(item);
-                if (keepItem) yield return item;
+                if (predicate(item)) yield return item;
             }
         }
     }
