@@ -7,12 +7,21 @@ namespace Assignment1
     {
         public static IEnumerable<T> Flatten<T>(IEnumerable<IEnumerable<T>> items)
         {
-            throw new NotImplementedException();
+            foreach (var innerEnumerable in items)
+            {
+                foreach (var item in innerEnumerable)
+                {
+                    yield return item;
+                }
+            }
         }
 
         public static IEnumerable<T> Filter<T>(IEnumerable<T> items, Predicate<T> predicate)
         {
-            throw new NotImplementedException();
+            foreach (var item in items)
+            {
+                if (predicate(item)) yield return item;
+            }
         }
     }
 }
