@@ -25,14 +25,12 @@ namespace Assignment1
             }
         }
 
-        //perhaps we should have some helper methods for this method
-        //perhaps also consider error handling for integer parsing?
         public static IEnumerable<(int width, int height)> Resolution(string resolutions)
         {
-            var pattern = "(?<width>[0-9]+)x(?<height>[0-9]+)";
+            var pattern = @"(?<width>[0-9]+)x(?<height>[0-9]+)";
             var matches = Regex.Matches(resolutions, pattern);
 
-            //why does var treat match as an object?
+            // why does var treat match as of type object?
             foreach (Match match in matches)
             {
                 var width = Int32.Parse(match.Groups["width"].Value);
