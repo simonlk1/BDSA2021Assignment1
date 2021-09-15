@@ -39,7 +39,16 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            throw new NotImplementedException();
+            var pattern = $@"<(?<tag>{tag}).*?>(?<capture>.*?)</\k<tag>>";
+            var matches = Regex.Matches(html, pattern);
+
+            var removeTagPattern = @"<[^>]*>";
+            foreach (Match match in matches)
+            {
+                var toReplace = match.Groups["capture"].ToString();
+                var result = Regex.Replace(toReplace, removeTagPattern, String.Empty);
+                yield return result;
+            }
         }
     }
 }

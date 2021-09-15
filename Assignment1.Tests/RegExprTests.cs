@@ -82,7 +82,7 @@ namespace Assignment1.Tests
             var expected = new List<(int, int)> { (1920, 1080), (1024, 768), (800, 600) };
 
             // Assert
-            Assert.Equal(output, expected);
+            Assert.Equal(expected, output);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace Assignment1.Tests
             var expected = new[] { "theoretical computer science", "formal language", "characters", "pattern", "string searching algorithms", "strings" };
 
             // Assert
-            Assert.Equal(output, expected);
+            Assert.Equal(expected, output);
         }
 
         [Fact]
@@ -110,7 +110,7 @@ namespace Assignment1.Tests
             var expected = new[] { "The phrase regular expressions (and consequently, regexes) is often used to mean the specific, standard textual syntax for representing patterns that matching text need to conform to." };
 
             // Assert
-            Assert.Equal(output, expected);
+            Assert.Equal(expected, output);
         }
     }
 }
